@@ -1,0 +1,75 @@
+<!-- 
+
+Hello Camper!
+
+Please read the README below in the JS Editor before beginning. Feel free to delete this message once you have read it. Good luck and Happy Coding! 
+
+- The freeCodeCamp Team 
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Quote Machine</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div id="root" class="d-flex justify-content-center align-items-center vh-100"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+  <script type="text/babel">
+
+    const quotes = [
+      { text: "When you have lemons, you make lemonade; and when you have rice, you make rice balls.", author: "Brock" },
+      { text: "There’s no sense in going out of your way to get somebody to like you.", author: "Ash" },
+      { text: "I see now that the circumstances of one’s birth are irrelevant; it is what you do with the gift of life that determines who you are.", author: "Mewtwo" },
+      { text: "Pika pika!", author: "Pikachu" },
+      { text: "I could use pants.", author: "Slowking" }
+    ];
+
+    class QuoteMachine extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          quote: quotes[0]
+        };
+        this.getNewQuote = this.getNewQuote.bind(this);
+      }
+
+      getNewQuote() {
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        this.setState({
+          quote: quotes[randomIndex]
+        });
+      }
+
+      render() {
+        const { text, author } = this.state.quote;
+
+        return (
+          <div id="quote-box" className="p-5 bg-light rounded text-center">
+            <h5 id="text">"{text}"</h5>
+            <p id="author">- {author}</p>
+            <button id="new-quote" className="btn btn-primary" onClick={this.getNewQuote}>New Quote</button>
+            <a 
+              id="tweet-quote" 
+              className="btn btn-info ml-2" 
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`"${text}" - ${author}`)}`} 
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Tweet Quote
+            </a>
+          </div>
+        );
+      }
+    }
+
+    ReactDOM.render(<QuoteMachine />, document.getElementById('root'));
+  </script>
+</body>
+</html>
