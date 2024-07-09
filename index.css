@@ -1,0 +1,26 @@
+    body {
+      background-color: #0e85c9;
+      font-family: 'Helvetica', sans-serif;
+    }
+    #quote-box {
+      background: #0e85c9;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      margin: auto;
+      padding: 40px;
+      border-radius: 10px;
+    }
+    #text {
+      font-size: 1.5rem;
+      color: #0e85c9;
+      margin-bottom: 20px;
+    }
+    #author {
+      font-size: 1.25rem;
+      color: #50bd86;
+      margin-bottom: 30px;
+    }
+    #new-quote, #tweet-quote {
+      font-size: 1rem;
+      padding: 10px 20px;
+    }
